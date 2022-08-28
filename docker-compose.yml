@@ -1,0 +1,33 @@
+services:
+    client:
+        build: ./client
+        # for production builds:
+        # command: npm run build
+        # command: npx serve -s build -l 3000
+        environment:
+            CHOKIDAR_USEPOLLING: "true"
+            FAST_REFRESH: "true"
+            SKIP_PREFLIGHT_CHECK: "true" # there's an issue with CRA and eslint (requires eslint "5.12.0" but we're installing "8.23.0")
+            DB_URL: "http://${SURREAL_ADDRESS}:${SURREAL_PORT_HOST}/rpc"
+        volumes:
+            - ./client:/usr/src/app
+        ports:
+            - ${CLIENT_PORT_HOST}:${CLIENT_PORT_CONTAINER}
+        networks:
+            - app
+
+    db:
+        image: surrealdb/surrealdb:latest
+        command: "start -b 0.0.0.0:${SURREAL_PORT_CONTAINER} -u ${SURREAL_ROOT_USER} -p ${SURREAL_ROOT_PASS} memory"
+        environment:
+            SURREAL_PORT_CONTAINER: ${SURREAL_PORT_CONTAINER}
+            SURREAL_ROOT_USER: ${SURREAL_ROOT_USER}
+            SURREAL_ROOT_PASS: ${SURREAL_ROOT_PASS}
+        ports:
+            - ${SURREAL_PORT_HOST}:${SURREAL_PORT_CONTAINER}
+        networks:
+            - app
+
+networks:
+    app:
+        driver: bridge
