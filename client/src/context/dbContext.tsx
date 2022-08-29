@@ -16,7 +16,7 @@ interface DbContextType {
     isReady: boolean
 }
 
-const DbContext = createContext<DbContextType>({ db: db, isReady: false })
+const DbContext = createContext<DbContextType>({ db, isReady: false })
 
 interface DbProviderProps {
     children?: ReactNode
