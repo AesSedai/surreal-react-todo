@@ -1,52 +1,53 @@
 {
-  "compilerOptions": {
-    "target": "ESnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+    "compilerOptions": {
+      "target": "ESnext",
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
+      ],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "noFallthroughCasesInSwitch": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": true,
+      "jsx": "react-jsx",
+      "checkJs": false,
+      "typeRoots": [
+        "./node_modules/@types",
+        "./typings"
+      ],
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "pretty": true,
+      "sourceMap": true,
+      "outDir": "./build",
+      "allowUnusedLabels": false,
+      "allowUnreachableCode": false,
+      "exactOptionalPropertyTypes": true,
+      "noImplicitOverride": true,
+      "noImplicitReturns": true,
+      "noPropertyAccessFromIndexSignature": false,
+      "noUncheckedIndexedAccess": true,
+      "noUnusedLocals": false,
+      "noUnusedParameters": false
+    },
+    "include": [
+      "./src/**/*.ts",
+      "./src/**/*.tsx",
+      "./src/vendor/**/*.js"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
-    "checkJs": false,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./typings"
-    ],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "pretty": true,
-    "sourceMap": true,
-    "outDir": "./build",
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": false,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false
-  },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./src/vendor/**/*.js"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/**/*.js",
-    "src/**/*.jsx"
-  ]
-}
+    "exclude": [
+      "node_modules",
+      "src/**/*.js",
+      "src/**/*.jsx"
+    ]
+  }
+  

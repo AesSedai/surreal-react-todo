@@ -2,7 +2,7 @@ import "./App.css"
 import { DbProvider } from "./context/dbContext"
 import logo from "./logo.svg"
 
-function App() {
+function App(): JSX.Element {
     return (
         <DbProvider>
             <div className="App">

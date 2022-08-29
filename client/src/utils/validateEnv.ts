@@ -8,4 +8,4 @@ export const env = cleanEnv(process.env, {
     DB_DB: str({ default: "test" })
 })
 
-export const validateEnv = () => env
+export const validateEnv = (): typeof env => env
