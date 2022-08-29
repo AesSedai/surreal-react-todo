@@ -18,7 +18,8 @@ services:
 
     db:
         image: surrealdb/surrealdb:latest
-        command: "start -b 0.0.0.0:${SURREAL_PORT_CONTAINER} -u ${SURREAL_ROOT_USER} -p ${SURREAL_ROOT_PASS} memory"
+        # -u ${SURREAL_ROOT_USER} -p ${SURREAL_ROOT_PASS} 
+        command: "start -b 0.0.0.0:${SURREAL_PORT_CONTAINER} memory"
         environment:
             SURREAL_PORT_CONTAINER: ${SURREAL_PORT_CONTAINER}
             SURREAL_ROOT_USER: ${SURREAL_ROOT_USER}
