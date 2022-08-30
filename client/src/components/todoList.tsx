@@ -1,11 +1,23 @@
 import { FC } from "react"
 import { useQuery } from "../hooks/useQuery"
+import { TodoInput } from "./todoInput"
+import { TodoItem } from "./todoItem"
 
 export const TodoList: FC = () => {
-    const { result } = useQuery("SELECT * FROM todo")
+    const { result, isLoading, isError, error, execute } = useQuery("SELECT id FROM todo;")
 
-    // const data = await db.query()
-    console.log("result", result)
+    if (isLoading) {
+        return <></>
+    }
+
+    if (isError) {
+        console.log("error", error)
+        return <></>
+    }
+
+    const refresh = async (): Promise<void> => {
+        await execute()
+    }
 
     return (
         <div
@@ -17,7 +29,10 @@ export const TodoList: FC = () => {
                 justifyContent: "start",
                 alignItems: "center"
             }}>
-            content here
+            {(result as any[]).map((item) => (
+                <TodoItem id={item.id} key={item.id} callback={refresh}></TodoItem>
+            ))}
+            <TodoInput callback={refresh}></TodoInput>
         </div>
     )
 }
