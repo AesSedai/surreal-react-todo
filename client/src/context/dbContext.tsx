@@ -31,8 +31,8 @@ export const DbProvider = (props: DbProviderProps): JSX.Element => {
             initialQuery = true
             try {
                 await db.signin({
-                    user: "root",
-                    pass: "root"
+                    user: env.DB_USER,
+                    pass: env.DB_PASS
                 })
                 await db.use(env.DB_NS, env.DB_DB)
                 console.log("db is ready")
