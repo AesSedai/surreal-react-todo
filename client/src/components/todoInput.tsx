@@ -19,7 +19,7 @@ export const TodoInput = (props: TodoInputProps): JSX.Element => {
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault()
 
-        const result = await execute({ content: { name: text, complete: false } })
+        const result = await execute({ content: { name: text, complete: false, createdAt: Date.now() } })
         console.log("result", result)
         if (callback != null) {
             callback()

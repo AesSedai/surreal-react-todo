@@ -4,7 +4,13 @@ import { TodoInput } from "./todoInput"
 import { TodoItem } from "./todoItem"
 
 export const TodoList: FC = () => {
-    const { result, isLoading, isError, error, execute } = useQuery("SELECT id FROM todo;")
+    const { result, isLoading, isError, error, execute } = useQuery(
+        "SELECT id, createdAt FROM todo ORDER BY createdAt ASC;"
+    )
+
+    const refresh = async (): Promise<void> => {
+        await execute()
+    }
 
     if (isLoading) {
         return <></>
@@ -13,10 +19,6 @@ export const TodoList: FC = () => {
     if (isError) {
         console.log("error", error)
         return <></>
-    }
-
-    const refresh = async (): Promise<void> => {
-        await execute()
     }
 
     return (
